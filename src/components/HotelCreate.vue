@@ -34,6 +34,7 @@
 </template>
 
 <script>
+    import { API_URL } from '../../urls.js';
     import axios from 'axios';
     export default {
         name: 'HotelCreate',
@@ -52,7 +53,7 @@
             submitForm(event) {
             event.preventDefault();
 
-            axios.post('http://localhost:8000/api/hotels', this.form)
+            axios.post(API_URL+'/hotels', this.form)
                 .then(response => {
                     console.log('Formulario enviado exitosamente', response.data);
                     this.form.name = '';

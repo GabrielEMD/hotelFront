@@ -72,6 +72,7 @@
 </template>
 
 <script>
+  import { API_URL } from '../../urls.js';
   import axios from 'axios';
   export default {
     data(){
@@ -82,14 +83,14 @@
     },
     name: 'HotelList',
     mounted(){
-      axios.get('http://localhost:8000/api/hotels')
+      axios.get(API_URL+'/hotels')
       .then(response => {
         this.hotels = response.data;
       })
       .catch(error => {
         console.error(error);
       });
-      axios.get('http://localhost:8000/api/rooms')
+      axios.get(API_URL+'/rooms')
       .then(response => {
         this.rooms = response.data;
       })

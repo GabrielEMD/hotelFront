@@ -25,6 +25,7 @@
 </template>
 
 <script>
+    import { API_URL } from '../../urls.js';
     import axios from 'axios';
     export default {
         props: ['id', 'nombre'],
@@ -61,7 +62,7 @@
                     }
                 }
 
-                axios.post('http://localhost:8000/api/rooms', this.payload)
+                axios.post(API_URL+'/rooms', this.payload)
                     .then(response => {
                         console.log('Formulario enviado exitosamente', response.data);
                         this.payload.amount = 0;
@@ -81,7 +82,7 @@
             }
         },
         mounted(){
-            axios.get('http://localhost:8000/api/roomtypes')
+            axios.get(API_URL+'/roomtypes')
             .then(response => {
                 this.types = response.data;
             })
